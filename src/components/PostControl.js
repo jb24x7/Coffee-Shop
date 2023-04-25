@@ -1,5 +1,6 @@
 import React from "react";
 import PostList from "./PostList";
+import Form from "./Form";
 // import NewProductForm from "./NewProductForm";
 // import ProductDetail from "./ProductDetail";
 // import ProductList from "./ProductList";
@@ -14,13 +15,11 @@ class PostControl extends React.Component {
     };
   }
 
-
-
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    currentlyVisibleState = <PostList /> 
+    currentlyVisibleState = <Form /> 
     buttonText="New post"
 
     return (
