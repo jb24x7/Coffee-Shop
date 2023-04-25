@@ -1,60 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import PostList from "./PostList";
 import PostDetail from "./PostDetails";
 import Form from "./Form";
-// import NewProductForm from "./NewProductForm";
-// import ProductDetail from "./ProductDetail";
-// import ProductList from "./ProductList";
-// import PropTypes from "prop-types";
 
-class PostControl extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      formVisibleOnPage: false,
-      selectedPost: false
-    };
-  }
+function PostControl() {
 
-  handleAddingNewPostToList = (newProduct) => {
-    const { dispatch } = this.props;
-    const { name, price, quantity, imgLink, id } = newProduct;
-    const action = {
-      type: 'ADD_PRODUCT',
-      name: name,
-      price: price,
-      quantity: quantity,
-      imgLink: imgLink,
-      id: id
-    };
-    dispatch(action);
-    this.setState({ formVisibleOnPage: false });
+  const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(false);
+  const [mainPostList, setMainPostList] = useState([]);
+
+  const handleClick = () => {
+    if (selectedPost != null) {
+      setFormVisibleOnPage(false);
+      setSelectedPost(null);
+    } else {
+      setFormVisibleOnPage(!formVisibleOnPage);
+    }
   };
 
-  render() {
-    let currentlyVisibleState = null;
-    let buttonText = null;
+  const handleAddingNewPostToList = (newPost) => {
+    const newMainPostList = mainPostList.concat(newPost);
+    setMainPostList(newMainPostList);
+    setFormVisibleOnPage(false);
+  };
 
-    if (this.state.formVisibleOnPage) {
-      currentlyVisibleState =
-        <Form onNewPostCreation={this.handleAddingNewPostToList}
-        />;
-      buttonText = "Return to list";
-    } else {
-      currentlyVisibleState = <PostList />;
-      buttonText = "New post";
-    }
+  const handleChangeSelectedPost = (id) => {
+    const selection = mainPostList.filter(post => post.id === id)[0];
+    setSelectedPost(selection);
+  };
 
-    return (
-      <React.Fragment>
-        {/* <PostList></PostList> */}
-        {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
-      </React.Fragment>
-    );
+
+  let currentlyVisibleState = null;
+  let buttonText = null;
+
+  if (selectedPost) {
+    currentlyVisibleState =
+      <PostDetail 
+      post={selectedPost}
+      />;
+    buttonText = "Return to list";
+  } else if (formVisibleOnPage) {
+    currentlyVisibleState =
+      <Form onNewPostCreation={handleAddingNewPostToList}
+      />;
+    buttonText = "Return to list";
+  } else {
+    currentlyVisibleState = <PostList
+    onPostSelection={handleChangeSelectedPost}
+    postList={mainPostList} />;
+    buttonText = "New post";
   }
-}
 
+  return (
+    <React.Fragment>
+      {currentlyVisibleState}
+      <button onClick={handleClick}>{buttonText}</button>
+    </React.Fragment>
+  );
+}
 
 export default PostControl;
