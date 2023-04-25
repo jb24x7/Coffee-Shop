@@ -11,6 +11,7 @@ function Form(props) {
       title: event.target.title.value,
       userName: event.target.userName.value,
       body: event.target.body.value,
+      votes: 0,
       id: v4()
     });
   }
