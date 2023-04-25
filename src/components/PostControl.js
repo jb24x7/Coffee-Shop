@@ -1,5 +1,6 @@
 import React from "react";
 import PostList from "./PostList";
+import PostDetail from "./PostDetails";
 import Form from "./Form";
 // import NewProductForm from "./NewProductForm";
 // import ProductDetail from "./ProductDetail";
@@ -11,16 +12,39 @@ class PostControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false
+      formVisibleOnPage: false,
+      selectedPost: false
     };
   }
+
+  handleAddingNewPostToList = (newProduct) => {
+    const { dispatch } = this.props;
+    const { name, price, quantity, imgLink, id } = newProduct;
+    const action = {
+      type: 'ADD_PRODUCT',
+      name: name,
+      price: price,
+      quantity: quantity,
+      imgLink: imgLink,
+      id: id
+    };
+    dispatch(action);
+    this.setState({ formVisibleOnPage: false });
+  };
 
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    currentlyVisibleState = <Form /> 
-    buttonText="New post"
+    if (this.state.formVisibleOnPage) {
+      currentlyVisibleState =
+        <Form onNewPostCreation={this.handleAddingNewPostToList}
+        />;
+      buttonText = "Return to list";
+    } else {
+      currentlyVisibleState = <PostList />;
+      buttonText = "New post";
+    }
 
     return (
       <React.Fragment>
