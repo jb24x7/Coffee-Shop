@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PostList from "./PostList";
 import PostDetail from "./PostDetails";
 import Form from "./Form";
@@ -75,5 +75,7 @@ const sortPostList = () => {
     </React.Fragment>
   );
 }
+
+// useContext;
 
 export default PostControl;
