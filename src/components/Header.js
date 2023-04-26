@@ -3,7 +3,7 @@ import React from "react";
 function Header() {
   return (
     <React.Fragment>
-      <h1>Fake Reddit</h1>
+      <h1 className="text-center">Fake Header</h1>
     </React.Fragment>
   );
 }

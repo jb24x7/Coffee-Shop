@@ -30,6 +30,14 @@ function PostControl() {
     setSelectedPost(selection);
   };
 
+  const handleVotesClick = (id, num) => {
+    const selection = mainPostList.filter(post => post.id === id)[0];
+    const index = mainPostList.indexOf(selection);
+    selection.votes += num;
+    const newMainPostList = mainPostList.splice(index, 1, selection)
+    setMainPostList(newMainPostList);
+  }
+
 
   let currentlyVisibleState = null;
   let buttonText = null;
@@ -47,7 +55,8 @@ function PostControl() {
     buttonText = "Return to list";
   } else {
     currentlyVisibleState = <PostList
-    onPostSelection={handleChangeSelectedPost}
+      onPostSelection={handleChangeSelectedPost}
+      onVotesClick={handleVotesClick}
     postList={mainPostList} />;
     buttonText = "New post";
   }

@@ -22,7 +22,7 @@ function Form(props) {
         <input
           type='text'
           name='title'
-          placeholder='Product Name' />
+          placeholder='Post Name' />
         <input
           type='text'
           name='userName'

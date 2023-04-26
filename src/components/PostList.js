@@ -24,14 +24,19 @@ function PostList(props) {
   return (
     <React.Fragment>
       {Object.values(props.postList).map((post) =>
-        <Post
-          whenPostClicked = { props.onPostSelection }
-          title={post.title}
-          userName={post.userName}
-          votes={post.votes}
-          body={post.body}
-          id={post.id}
-          key={post.id} />
+        <div className="container">
+          <div className="rounded p-3 mt-3 mb-3 bg-dark">
+            <Post
+              whenPostClicked={props.onPostSelection}
+              whenVotesClicked={props.onVotesClick}
+              title={post.title}
+              userName={post.userName}
+              votes={post.votes}
+              body={post.body}
+              id={post.id}
+              key={post.id} />
+          </div>
+        </div>
       )}
     </React.Fragment>
   );
@@ -39,7 +44,8 @@ function PostList(props) {
 
 PostList.propTypes = {
   postList: PropTypes.array,
-  onPostSelection: PropTypes.func
+  onPostSelection: PropTypes.func,
+  onVotesClick: PropTypes.func
 };
 
 export default PostList;
