@@ -30,13 +30,20 @@ function PostControl() {
     setSelectedPost(selection);
   };
 
-  const handleVotesClick = (id, num) => {
-    const selection = mainPostList.filter(post => post.id === id)[0];
-    const index = mainPostList.indexOf(selection);
-    selection.votes += num;
-    const newMainPostList = mainPostList.splice(index, 1, selection)
-    setMainPostList(newMainPostList);
-  }
+const handleVotesClick = (id, num) => {
+  const selection = mainPostList.filter(post => post.id === id)[0];
+  const index = mainPostList.indexOf(selection);
+  selection.votes += num;
+  const newMainPostList = mainPostList.slice();
+  newMainPostList.splice(index, 1, selection);
+  setMainPostList(newMainPostList);
+  sortPostList();
+};
+
+const sortPostList = () => {
+  const newMainPostList = Object.values(mainPostList).sort((a, b) => b.votes - a.votes);
+  setMainPostList(newMainPostList);
+}
 
 
   let currentlyVisibleState = null;
