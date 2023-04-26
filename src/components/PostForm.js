@@ -2,6 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function PostForm(props) {
+
+  const { title, userName, body } = props;
+
   return (
     <React.Fragment>
       <form onSubmit={props.formSubmissionHandler}>
@@ -10,13 +13,15 @@ function PostForm(props) {
             Post Title: <input
               type='text'
               name='title'
-              placeholder='Title' />
+              placeholder='Title'
+              defaultValue={title} />
           </div>
           <div className="col-md-6 mb-3">
             Name: <input
               type='text'
               name='userName'
-              placeholder='User Name' />
+              placeholder='User Name'
+              defaultValue={userName} />
           </div>
         </div>
         <div className="row">
@@ -25,7 +30,8 @@ function PostForm(props) {
             <textarea
               name='body'
               placeholder='Post text goes here...'
-              style={{ width: '80%', rows: '4', resize: 'both' }} />
+              style={{ width: '80%', rows: '4', resize: 'both' }}
+              defaultValue={body} />
           </div>
         </div>
         <button className="mb-3" type='submit'>{props.buttonText}</button>
