@@ -1,25 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { v4 } from 'uuid';
 
-
-function Form(props) {
-  const date = new Date();
-  function handleNewPostFormSubmission(event) {
-    event.preventDefault();
-    props.onNewPostCreation({
-      title: event.target.title.value,
-      userName: event.target.userName.value,
-      body: event.target.body.value,
-      votes: 0,
-      id: v4(),
-      time: date.toString().slice(0, 15) + " " + date.toLocaleTimeString()
-    });
-  }
-
+function PostForm(props) {
   return (
     <React.Fragment>
-      <form onSubmit={handleNewPostFormSubmission}>
+      <form onSubmit={props.formSubmissionHandler}>
         <div className="row">
           <div className="col-md-6 mb-3">
             Post Title: <input
@@ -43,10 +28,15 @@ function Form(props) {
               style={{ width: '80%', rows: '4', resize: 'both' }} />
           </div>
         </div>
-        <button className="mb-3" type='submit'>Submit</button>
+        <button className="mb-3" type='submit'>{props.buttonText}</button>
       </form>
     </React.Fragment>
   );
 }
 
-export default Form;
+PostForm.popTypes = {
+  formSubmissionHandler: PropTypes.func,
+  buttonText: PropTypes.string
+};
+
+export default PostForm;

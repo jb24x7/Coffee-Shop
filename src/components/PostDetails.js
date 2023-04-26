@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function PostDetail(props) {
-  const { post } = props;
+  const { post, onClickingEdit, onClickingDelete } = props;
 
   return (
     <React.Fragment>
@@ -27,6 +27,8 @@ function PostDetail(props) {
             </div>
           </div>
         </div>
+        <button onClick={() => onClickingEdit(post.id)}>Edit Post</button>
+        <button onClick={() => onClickingDelete(post.id)}>Delete Post</button>
       </div>
     </React.Fragment >
   );
