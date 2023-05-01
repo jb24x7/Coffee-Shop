@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import PostList from "./PostList";
 import PostDetail from "./PostDetails";
 import NewPost from "./NewPost";
@@ -29,7 +29,7 @@ function PostControl() {
     const newMainPostList = mainPostList.filter(post => post.id !== id);
     setMainPostList(newMainPostList);
     setSelectedPost(null);
-  }
+  };
 
   const handleEditingPostInList = (postToEdit) => {
     const editedMainPostList = mainPostList
@@ -45,6 +45,11 @@ function PostControl() {
     setMainPostList(newMainPostList);
     setFormVisibleOnPage(false);
   };
+
+  useEffect(() => { // because useEffect is run after each time the component re-renders so now each time the list is updated (for instance when we add a new post), useEffect will call sortPostLit to reorder the list to include the new post with 0 votes.  Without this it would be concatenated onto the end of the list, below even posts with negative vote totals. 
+    sortPostList();
+  }, [mainPostList]); // passing in the second argument tells useEffect() to only run when the values in the state array (the second argument) change.
+
 
   const handleChangeSelectedPost = (id) => {
     const selection = mainPostList.filter(post => post.id === id)[0];
@@ -72,16 +77,16 @@ function PostControl() {
   if (editing) {
     currentlyVisibleState =
       <EditPostForm
-      post={selectedPost}
-      onEditPost={handleEditingPostInList} />;
+        post={selectedPost}
+        onEditPost={handleEditingPostInList} />;
     buttonText = "Return to list";
   }
   else if (selectedPost != null) {
     currentlyVisibleState =
       <PostDetail
-      post={selectedPost}
-      onClickingEdit={handleEditClick}
-      onClickingDelete={handleDeletingPost} />;
+        post={selectedPost}
+        onClickingEdit={handleEditClick}
+        onClickingDelete={handleDeletingPost} />;
     buttonText = "Return to list";
   } else if (formVisibleOnPage) {
     currentlyVisibleState =
