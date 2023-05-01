@@ -10,7 +10,7 @@ function CoffeeForm(props) {
       <form onSubmit={props.formSubmissionHandler}>
         <div className="row">
           <div className="col-md-6 mb-3">
-            Coffee Type: <input
+            Burlap Sack Type: <input
               type='text'
               name='type'
               placeholder='Type'
