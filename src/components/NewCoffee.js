@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PostForm from "./PostForm";
+import CoffeeForm from "./CoffeeForm";
 import { v4 } from 'uuid';
 import { formatDistanceToNow } from 'date-fns';
 
-function NewPost(props) {
+function NewCoffee(props) {
 
-  function handleNewPostFormSubmission(event) {
+  function handleNewCoffeeFormSubmission(event) {
     const date = new Date();
     event.preventDefault();
-    props.onNewPostCreation({
+    props.onNewCoffeeCreation({
       title: event.target.title.value,
       userName: event.target.userName.value,
       body: event.target.body.value,
@@ -24,15 +24,15 @@ function NewPost(props) {
 
   return (
     <React.Fragment>
-      <PostForm
-        formSubmissionHandler={handleNewPostFormSubmission}
+      <CoffeeForm
+        formSubmissionHandler={handleNewCoffeeFormSubmission}
         buttonText="Submit" />
     </React.Fragment>
   );
 }
 
-NewPost.propTypes = {
-  onNewPostCreation: PropTypes.func
+NewCoffee.propTypes = {
+  onNewCoffeeCreation: PropTypes.func
 };
 
-export default NewPost;
+export default NewCoffee;

@@ -1,37 +1,37 @@
 import React from "react";
-import Form from "./PostForm";
+import Form from "./CoffeeForm";
 import PropTypes from "prop-types";
 
-function EditPostForm(props) {
-  const { post } = props;
+function EditCoffeeForm(props) {
+  const { coffee } = props;
 
-  function handleEditPostFormSubmission(event) {
+  function handleEditCoffeeFormSubmission(event) {
     event.preventDefault();
-    props.onEditPost({
+    props.onEditCoffee({
       userName: event.target.userName.value,
       body: event.target.body.value,
       title: event.target.title.value,
-      votes: post.votes,
-      time: post.time,
-      id: post.id
+      votes: coffee.votes,
+      time: coffee.time,
+      id: coffee.id
     });
   }
 
   return (
     <React.Fragment>
       <Form
-        formSubmissionHandler={handleEditPostFormSubmission}
-        buttonText="Update Post"
-        userName={post.userName}
-        body={post.body}
-        title={post.title} />
+        formSubmissionHandler={handleEditCoffeeFormSubmission}
+        buttonText="Update Coffee"
+        userName={coffee.userName}
+        body={coffee.body}
+        title={coffee.title} />
     </React.Fragment>
   );
 }
 
-export default EditPostForm;
+export default EditCoffeeForm;
 
-EditPostForm.propTypes = {
-  post: PropTypes.object,
-  onEditPost: PropTypes.func
+EditCoffeeForm.propTypes = {
+  coffee: PropTypes.object,
+  onEditCoffee: PropTypes.func
 };

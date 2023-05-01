@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Post(props) {
+function Coffee(props) {
 
   return (
     <React.Fragment>
-      <h3 onClick={() => props.whenPostClicked(props.id)}>{props.title}</h3>
+      <h3 onClick={() => props.whenCoffeeClicked(props.id)}>{props.title}</h3>
       <p>User: {props.userName}</p>
       <p>Total votes: {props.votes}</p>
       <p>{props.body}</p>
@@ -18,7 +18,7 @@ function Post(props) {
   );
 }
 
-Post.propTypes = {
+Coffee.propTypes = {
   title: PropTypes.string,
   userName: PropTypes.string,
   time: PropTypes.object,
@@ -26,4 +26,4 @@ Post.propTypes = {
   body: PropTypes.string
 };
 
-export default Post;
+export default Coffee;

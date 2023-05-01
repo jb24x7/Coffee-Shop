@@ -1,40 +1,40 @@
 import React from "react";
-import Post from "./Post";
+import Coffee from "./Coffee";
 import PropTypes from "prop-types";
 
-// const postList = [
+// const coffeeList = [
 //   {
 //     title: "This is the title",
 //     userName: "Jon P. Weinerstein",
 //     // time=
 //     votes: 3,
-//     body: "This is the body fo the post"
+//     body: "This is the body fo the coffee"
 //   },
 //   {
 //     title: "Second title",
 //     userName: "Joseph J. Johnson",
 //     // time=
 //     votes: 420,
-//     body: "Super cool awesome post"
+//     body: "Super cool awesome coffee"
 //   }
 // ];
 
-function PostList(props) {
+function CoffeeList(props) {
 
   return (
     <React.Fragment>
-      {Object.values(props.postList).map((post) =>
+      {Object.values(props.coffeeList).map((coffee) =>
         <div className="container">
           <div className="rounded p-3 mt-3 mb-3 bg-dark">
-            <Post
-              whenPostClicked={props.onPostSelection}
+            <Coffee
+              whenCoffeeClicked={props.onCoffeeSelection}
               whenVotesClicked={props.onVotesClick}
-              title={post.title}
-              userName={post.userName}
-              votes={post.votes}
-              body={post.body}
-              id={post.id}
-              key={post.id} />
+              title={coffee.title}
+              userName={coffee.userName}
+              votes={coffee.votes}
+              body={coffee.body}
+              id={coffee.id}
+              key={coffee.id} />
           </div>
         </div>
       )}
@@ -42,10 +42,10 @@ function PostList(props) {
   );
 }
 
-PostList.propTypes = {
-  postList: PropTypes.array,
-  onPostSelection: PropTypes.func,
+CoffeeList.propTypes = {
+  coffeeList: PropTypes.array,
+  onCoffeeSelection: PropTypes.func,
   onVotesClick: PropTypes.func
 };
 
-export default PostList;
+export default CoffeeList;

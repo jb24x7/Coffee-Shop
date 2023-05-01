@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function PostForm(props) {
+function CoffeeForm(props) {
 
   const { title, userName, body } = props;
 
@@ -10,7 +10,7 @@ function PostForm(props) {
       <form onSubmit={props.formSubmissionHandler}>
         <div className="row">
           <div className="col-md-6 mb-3">
-            Post Title: <input
+            Coffee Title: <input
               type='text'
               name='title'
               placeholder='Title'
@@ -29,7 +29,7 @@ function PostForm(props) {
             <label style={{ verticalAlign: 'top' }}>Body:</label>
             <textarea
               name='body'
-              placeholder='Post text goes here...'
+              placeholder='Coffee text goes here...'
               style={{ width: '80%', rows: '4', resize: 'both' }}
               defaultValue={body} />
           </div>
@@ -40,9 +40,9 @@ function PostForm(props) {
   );
 }
 
-PostForm.popTypes = {
+CoffeeForm.popTypes = {
   formSubmissionHandler: PropTypes.func,
   buttonText: PropTypes.string
 };
 
-export default PostForm;
+export default CoffeeForm;

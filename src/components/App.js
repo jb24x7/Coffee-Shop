@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import PostControl from "./PostControl";
+import CoffeeControl from "./CoffeeControl";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
           <Header />
         </div>
         <div className="mt-3">
-          <PostControl />
+          <CoffeeControl />
         </div>
       </div>
     </React.Fragment>
