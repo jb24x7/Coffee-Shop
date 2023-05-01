@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function CoffeeForm(props) {
 
-  const { type, userName, body } = props;
+  const { type} = props;
 
   return (
     <React.Fragment>
@@ -15,23 +15,6 @@ function CoffeeForm(props) {
               name='type'
               placeholder='Type'
               defaultValue={type} />
-          </div>
-          <div className="col-md-6 mb-3">
-            Name: <input
-              type='text'
-              name='userName'
-              placeholder='User Name'
-              defaultValue={userName} />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-12 mb-3">
-            <label style={{ verticalAlign: 'top' }}>Body:</label>
-            <textarea
-              name='body'
-              placeholder='Coffee text goes here...'
-              style={{ width: '80%', rows: '4', resize: 'both' }}
-              defaultValue={body} />
           </div>
         </div>
         <button className="mb-3" type='submit'>{props.buttonText}</button>

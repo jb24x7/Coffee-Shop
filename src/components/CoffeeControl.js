@@ -46,9 +46,9 @@ function CoffeeControl() {
     setFormVisibleOnPage(false);
   };
 
-  useEffect(() => { // because useEffect is run after each time the component re-renders so now each time the list is updated (for instance when we add a new coffee), useEffect will call sortCoffeeLit to reorder the list to include the new coffee with 0 votes.  Without this it would be concatenated onto the end of the list, below even coffees with negative vote totals. 
+  useEffect(() => {
     sortCoffeeList();
-  }, [mainCoffeeList]); // passing in the second argument tells useEffect() to only run when the values in the state array (the second argument) change.
+  }, [mainCoffeeList]); 
 
 
   const handleChangeSelectedCoffee = (id) => {
@@ -56,10 +56,10 @@ function CoffeeControl() {
     setSelectedCoffee(selection);
   };
 
-  const handleVotesClick = (id, num) => {
+  const handlePoundsClick = (id, num) => {
     const selection = mainCoffeeList.filter(coffee => coffee.id === id)[0];
     const index = mainCoffeeList.indexOf(selection);
-    selection.votes += num;
+    selection.pounds -= num;
     const newMainCoffeeList = mainCoffeeList.slice();
     newMainCoffeeList.splice(index, 1, selection);
     setMainCoffeeList(newMainCoffeeList);
@@ -67,7 +67,7 @@ function CoffeeControl() {
   };
 
   const sortCoffeeList = () => {
-    const newMainCoffeeList = Object.values(mainCoffeeList).sort((a, b) => b.votes - a.votes);
+    const newMainCoffeeList = Object.values(mainCoffeeList).sort((a, b) => b.pounds - a.pounds);
     setMainCoffeeList(newMainCoffeeList);
   };
 
@@ -96,7 +96,7 @@ function CoffeeControl() {
   } else {
     currentlyVisibleState = <CoffeeList
       onCoffeeSelection={handleChangeSelectedCoffee}
-      onVotesClick={handleVotesClick}
+      onPoundsClick={handlePoundsClick}
       coffeeList={mainCoffeeList} />;
     buttonText = "New coffee";
   }

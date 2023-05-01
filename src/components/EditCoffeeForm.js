@@ -8,10 +8,8 @@ function EditCoffeeForm(props) {
   function handleEditCoffeeFormSubmission(event) {
     event.preventDefault();
     props.onEditCoffee({
-      userName: event.target.userName.value,
-      body: event.target.body.value,
       type: event.target.type.value,
-      votes: coffee.votes,
+      pounds: coffee.pounds,
       time: coffee.time,
       id: coffee.id
     });
@@ -22,8 +20,6 @@ function EditCoffeeForm(props) {
       <Form
         formSubmissionHandler={handleEditCoffeeFormSubmission}
         buttonText="Update Coffee"
-        userName={coffee.userName}
-        body={coffee.body}
         type={coffee.type} />
     </React.Fragment>
   );

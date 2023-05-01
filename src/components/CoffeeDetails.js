@@ -18,11 +18,6 @@ function CoffeeDetail(props) {
               <h1 name="type">{coffee.type}</h1>
             </div>
           </div>
-          <div className="row">
-            <div className="col-12">
-              <p name="body">{coffee.body}</p>
-            </div>
-          </div>
         </div>
         <button onClick={() => onClickingEdit(coffee.id)}>Edit Coffee</button>
         <button onClick={() => onClickingDelete(coffee.id)}>Delete Coffee</button>

@@ -11,9 +11,7 @@ function NewCoffee(props) {
     event.preventDefault();
     props.onNewCoffeeCreation({
       type: event.target.type.value,
-      userName: event.target.userName.value,
-      body: event.target.body.value,
-      votes: 0,
+      pounds: 130,
       id: v4(),
       time: date.toString().slice(4, 15) + " " + date.toLocaleTimeString([], {
         hour: '2-digit', minute: '2-digit' }) + ' (' + formatDistanceToNow(new Date(), {
