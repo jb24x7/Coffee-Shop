@@ -3,18 +3,18 @@ import PropTypes from "prop-types";
 
 function CoffeeForm(props) {
 
-  const { title, userName, body } = props;
+  const { type, userName, body } = props;
 
   return (
     <React.Fragment>
       <form onSubmit={props.formSubmissionHandler}>
         <div className="row">
           <div className="col-md-6 mb-3">
-            Coffee Title: <input
+            Coffee Type: <input
               type='text'
-              name='title'
-              placeholder='Title'
-              defaultValue={title} />
+              name='type'
+              placeholder='Type'
+              defaultValue={type} />
           </div>
           <div className="col-md-6 mb-3">
             Name: <input

@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 
 // const coffeeList = [
 //   {
-//     title: "This is the title",
+//     type: "This is the type",
 //     userName: "Jon P. Weinerstein",
 //     // time=
 //     votes: 3,
 //     body: "This is the body fo the coffee"
 //   },
 //   {
-//     title: "Second title",
+//     type: "Second type",
 //     userName: "Joseph J. Johnson",
 //     // time=
 //     votes: 420,
@@ -29,7 +29,7 @@ function CoffeeList(props) {
             <Coffee
               whenCoffeeClicked={props.onCoffeeSelection}
               whenVotesClicked={props.onVotesClick}
-              title={coffee.title}
+              type={coffee.type}
               userName={coffee.userName}
               votes={coffee.votes}
               body={coffee.body}

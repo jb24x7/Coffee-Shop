@@ -10,7 +10,7 @@ function NewCoffee(props) {
     const date = new Date();
     event.preventDefault();
     props.onNewCoffeeCreation({
-      title: event.target.title.value,
+      type: event.target.type.value,
       userName: event.target.userName.value,
       body: event.target.body.value,
       votes: 0,

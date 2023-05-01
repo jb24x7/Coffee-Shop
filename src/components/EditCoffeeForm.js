@@ -10,7 +10,7 @@ function EditCoffeeForm(props) {
     props.onEditCoffee({
       userName: event.target.userName.value,
       body: event.target.body.value,
-      title: event.target.title.value,
+      type: event.target.type.value,
       votes: coffee.votes,
       time: coffee.time,
       id: coffee.id
@@ -24,7 +24,7 @@ function EditCoffeeForm(props) {
         buttonText="Update Coffee"
         userName={coffee.userName}
         body={coffee.body}
-        title={coffee.title} />
+        type={coffee.type} />
     </React.Fragment>
   );
 }

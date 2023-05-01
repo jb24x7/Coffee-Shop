@@ -5,8 +5,7 @@ function Coffee(props) {
 
   return (
     <React.Fragment>
-      <h3 onClick={() => props.whenCoffeeClicked(props.id)}>{props.title}</h3>
-      <p>User: {props.userName}</p>
+      <h3 onClick={() => props.whenCoffeeClicked(props.id)}>{props.type}</h3>
       <p>Total votes: {props.votes}</p>
       <p>{props.body}</p>
       <div>
@@ -19,8 +18,7 @@ function Coffee(props) {
 }
 
 Coffee.propTypes = {
-  title: PropTypes.string,
-  userName: PropTypes.string,
+  type: PropTypes.string,
   time: PropTypes.object,
   votes: PropTypes.number,
   body: PropTypes.string

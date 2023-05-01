@@ -9,16 +9,13 @@ function CoffeeDetail(props) {
       <div className="container rounded p-3 mt-3 mb-3 bg-dark">
         <div className="d-flex justify-content-between align-items-center">
           <div>
-            <p name="user"><strong>Coffeeed by: {coffee.userName}</strong></p>
-          </div>
-          <div>
-            <p name="date">Date: {coffee.time}</p>
+            <p name="date">Date added: {coffee.time}</p>
           </div>
         </div>
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h1 name="title">{coffee.title}</h1>
+              <h1 name="type">{coffee.type}</h1>
             </div>
           </div>
           <div className="row">
